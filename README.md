@@ -1,8 +1,6 @@
 # WealthCompass
 ## WealthCompass Financial Tracking App Summary
 
-## WealthCompass Financial Tracking App Summary
-
 **Core Features Implemented:**
 
 - JWT Authentication for secure email/password reg...ion and login
