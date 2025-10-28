@@ -1,0 +1,163 @@
+This is an ambitious project for a beginner, but I can guide you through every step. This application is a complex system (called a Full-Stack Application) because it has two main parts that run separately: the Backend (FastAPI), which handles the data, and the Frontend (React), which handles what you see on the screen.
+
+We will break down the process into five simple phases. Assume every command is run in a program called your Terminal or Command Prompt (like PowerShell on Windows or Terminal on Mac/Linux).
+
+Phase 1: Getting Your Machine Ready (Prerequisites)
+Before we start, you need three main tools installed on your computer: Git, Node.js, and Python.
+
+1. Install Git (The Cloning Tool)
+Git is what we use to copy the project files from GitHub to your computer.
+
+Go to the Git website and download the installer for your operating system.
+
+Follow the installation steps, accepting the default options.
+
+Verification: Open your Terminal/Command Prompt and type:
+
+Bash
+
+git --version
+If you see a version number, it's installed correctly.
+
+2. Install Python 3 (For the Backend)
+Python is the language for your FastAPI backend.
+
+Go to the official Python website and download the latest installer (Python 3.10 or newer is best).
+
+Crucial Step for Windows: During installation, make sure you check the box that says "Add Python to PATH."
+
+Verification: Open your Terminal/Command Prompt and type:
+
+Bash
+
+python --version
+# OR (sometimes it's installed as python3)
+python3 --version
+3. Install Node.js (For the Frontend)
+Node.js is the environment needed to run the React frontend. It comes with npm (Node Package Manager), which we use to install all the frontend libraries.
+
+Go to the Node.js website and download the LTS (Long-Term Support) version.
+
+Follow the installation steps, accepting the defaults.
+
+Verification: Open your Terminal/Command Prompt and type:
+
+Bash
+
+node -v
+npm -v
+Phase 2: Copying the Project Files
+Now we will get the actual project files from GitHub.
+
+1. Clone the Project
+In your Terminal/Command Prompt, navigate to the folder where you want to keep the project (e.g., your Desktop or Documents folder) and run this command:
+
+Bash
+
+git clone https://github.com/kamalthakor22/WealthCompass.git
+2. Enter the Project Folder
+This command created a new folder named WealthCompass. Move into that folder:
+
+Bash
+
+cd WealthCompass
+(You will be running all subsequent commands from inside this folder.)
+
+Phase 3: Setting Up the Backend (FastAPI)
+The backend needs Python to run and a database (MongoDB) to store data.
+
+1. Navigate to the Backend Folder
+Bash
+
+cd backend
+2. Create a Python Virtual Environment
+This is a standard practice to keep your project's dependencies separate from other Python projects.
+
+Bash
+
+# Create the environment
+python -m venv venv
+
+# Activate the environment:
+# On Windows:
+.\venv\Scripts\activate
+
+# On Mac/Linux:
+source venv/bin/activate
+(You will see (venv) appear at the start of your terminal line, confirming it's active.)
+
+3. Install Python Libraries
+The requirements.txt file lists all the Python libraries (like FastAPI, uvicorn, pymongo, etc.) needed for the backend.
+
+Bash
+
+pip install -r requirements.txt
+4. Set Up the Environment File (.env)
+The backend needs sensitive keys (like your Alpha Vantage API key and your MongoDB connection string) that should not be stored directly in the code. We use a file called .env for this.
+
+Create a new file named .env inside the backend folder.
+
+Paste the following structure into the .env file:
+
+# ----------------------------------------------------------------
+# 1. MongoDB Connection: Set up a free account on MongoDB Atlas (recommended)
+#    and paste your connection string here. It looks something like:
+#    mongodb+srv://<USERNAME>:<PASSWORD>@<cluster-name>.mongodb.net/?retryWrites=true&w=majority
+MONGO_URI="mongodb+srv://your_username:your_password@cluster0.abcde.mongodb.net/YourDatabaseName?retryWrites=true&w=majority"
+
+# ----------------------------------------------------------------
+# 2. Alpha Vantage API Key: Get a free key from the Alpha Vantage website.
+ALPHA_VANTAGE_API_KEY="YOUR_ALPHA_VANTAGE_KEY_HERE"
+
+# ----------------------------------------------------------------
+# 3. Security Key: Used by FastAPI to secure user login information.
+#    You can generate a random string of 32 characters here.
+SECRET_KEY="a_long_random_string_of_characters"
+ALGORITHM="HS256"
+ACCESS_TOKEN_EXPIRE_MINUTES=30
+5. Start the Backend Server
+Now we can start the FastAPI server using uvicorn.
+
+Bash
+
+uvicorn main:app --reload
+Your backend is now running at http://127.0.0.1:8000. Do not close this terminal window!
+
+Phase 4: Setting Up the Frontend (React)
+You need to open a new terminal window for the frontend, as the backend is running in the first one.
+
+1. Navigate to the Frontend Folder
+In your new terminal, navigate back to the main WealthCompass folder, and then into the frontend folder:
+
+Bash
+
+# If you are still in the 'backend' folder:
+cd ..
+# Now you are in 'WealthCompass'
+cd frontend
+2. Install Node Packages
+The package.json file lists all the JavaScript libraries (like React, routing libraries, etc.) needed for the frontend. We use npm to install them.
+
+Bash
+
+npm install
+3. Start the Frontend Server
+The command npm start is configured to launch the React development server.
+
+Bash
+
+npm start
+The frontend is now running.
+
+Phase 5: View the Application
+The React frontend should automatically open in your web browser, typically at:
+
+👉 http://localhost:3000
+
+You now have both parts of the application running:
+
+Backend (Port 8000): Serving data and handling authentication/database/API calls.
+
+Frontend (Port 3000): Displaying the user interface and communicating with the backend.
+
+Keep both terminal windows open while you use or develop the application!
